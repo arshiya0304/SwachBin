@@ -4,53 +4,47 @@ const container = document.querySelector(".container"),
       signUp = document.querySelector(".signup-link"),
       login = document.querySelector(".login-link");
 
-    //   js code to show/hide password and change icon
-    pwShowHide.forEach(eyeIcon =>{
-        eyeIcon.addEventListener("click", ()=>{
-            pwFields.forEach(pwField =>{
-                if(pwField.type ==="password"){
-                    pwField.type = "text";
-
-                    pwShowHide.forEach(icon =>{
-                        icon.classList.replace("fa-eye-slash", "fa-eye");
-                    })
-                }else{
-                    pwField.type = "password";
-
-                    pwShowHide.forEach(icon =>{
-                        icon.classList.replace("fa-eye", "fa-eye-slash");
-                    })
-                }
-            }) 
-        })
-    })
-
-    // js code to appear signup and login form
-    signUp.addEventListener("click", ( )=>{
-        container.classList.add("active");
+// Toggle Password Visibility
+pwShowHide.forEach(eyeIcon => {
+    eyeIcon.addEventListener("click", () => {
+        pwFields.forEach(pwField => {
+            if (pwField.type === "password") {
+                pwField.type = "text";
+                pwShowHide.forEach(icon => {
+                    icon.classList.replace("fa-eye-slash", "fa-eye");
+                });
+            } else {
+                pwField.type = "password";
+                pwShowHide.forEach(icon => {
+                    icon.classList.replace("fa-eye", "fa-eye-slash");
+                });
+            }
+        });
     });
-    login.addEventListener("click", ( )=>{
-        container.classList.remove("active");
-    });
+});
 
+// Switch Between Sign Up and Login
+signUp.addEventListener("click", () => {
+    container.classList.add("active");
+});
+login.addEventListener("click", () => {
+    container.classList.remove("active");
+});
 
-//username,password
-    function func(){
-        var email = document.getElementById("username").value;
-        var password = document.getElementById("password").value;
-        if(email == 'user1' && password == '12345')
-        {
-            window.location.assign("home.html")
-        }
-        if
-          (email == 'user2' && password == '54321')
-        {
-            window.location.assign("home.html")
-        }
-        else{
-            alert("Wrong username or password")
-        }
+// Login Functionality with Dummy Usernames and Passwords
+function func(event) {
+    event.preventDefault(); // Prevent form submission
+    var email = document.getElementById("username").value.trim();
+    var password = document.getElementById("password").value.trim();
+
+    if ((email === 'user1' && password === '12345') ||
+        (email === 'user2' && password === '54321')) {
+        window.location.assign("home.html"); // Redirect to home page
+    } else {
+        alert("Wrong username or password");
     }
+}
+
 //homepage
 
     
